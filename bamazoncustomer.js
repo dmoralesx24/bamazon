@@ -17,6 +17,8 @@ connection.connect(function (err) {
     if (err) throw err;
     console.log("Welcome To Bamazon!!");
 
+    console.log("---------------------------------------------------");
+
     // my starting function that prompts the user
     start();
 });
@@ -42,7 +44,7 @@ function start() {
                 message: "How many would you like?"
             }
         ]).then(function (answer) {
-            
+
          let numLeft;
          let chosenItem;
          let total;
@@ -72,7 +74,9 @@ function start() {
             ], function(err) {
                 if(err) throw err;
 
-                console.log(`Your total today is ${total}`);
+                console.log("---------------------------------------------------");
+
+                console.log(`Your total today is $${total}`);
                 round2();
             }
          );
@@ -84,6 +88,8 @@ function start() {
 };
 
 function round2() {
+    console.log("---------------------------------------------------");
+
     inquirer.prompt({
         name: "options",
         type: "list",
@@ -92,11 +98,15 @@ function round2() {
     })
     .then(function(answer) {
         if(answer.options === "Checkout") {
+            console.log("---------------------------------------------------");
+
             console.log("Thank you for your purchase please come again soon!");
             connection.end();
         } else if(answer.options === "Keep shopping") {
             start();
         } else {
+            console.log("---------------------------------------------------");
+
             console.log("Thank you for shopping at Bamazon!");
             connection.end();
         };
